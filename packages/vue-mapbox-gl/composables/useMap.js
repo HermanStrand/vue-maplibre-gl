@@ -9,7 +9,7 @@ import { inject } from 'vue';
  * @returns {{ map: Ref<any> }}
  */
 export function useMap() {
-  const map = inject('mapbox-map', null);
+  const map = inject('maplibre-map', null);
 
   return {
     map,

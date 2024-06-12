@@ -57,7 +57,7 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: v${{ github.ref_name }}
-          body: Please refer to [CHANGELOG.md](https://github.com/studiometa/vue-mapbox-gl/blob/${{ github.ref_name }}/CHANGELOG.md) for details.
+          body: Please refer to [CHANGELOG.md](https://github.com/strher/vue-maplibre-gl/blob/${{ github.ref_name }}/CHANGELOG.md) for details.
           draft: false
           prerelease: ${{ env.is_prerelease }}
 

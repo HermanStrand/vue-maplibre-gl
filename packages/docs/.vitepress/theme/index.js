@@ -1,5 +1,5 @@
 import DefaultTheme from 'vitepress/theme'
-import 'mapbox-gl/dist/mapbox-gl.css';
+import 'maplibre-gl/dist/maplibre-gl.css';
 
 export default {
   ...DefaultTheme,

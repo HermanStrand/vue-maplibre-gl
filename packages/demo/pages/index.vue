@@ -1,22 +1,17 @@
 <script setup>
   import { ref, computed } from 'vue';
   import {
-    MapboxGeocoder,
-    MapboxGeolocateControl,
-    MapboxImage,
-    MapboxImages,
-    MapboxLayer,
-    MapboxMap,
-    MapboxMarker,
-    MapboxNavigationControl,
-    MapboxPopup,
-    MapboxCluster,
-  } from '@studiometa/vue-mapbox-gl';
-  import 'mapbox-gl/dist/mapbox-gl.css';
-  import '@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
+    MaplibreImage,
+    MaplibreImages,
+    MaplibreLayer,
+    MaplibreMap,
+    MaplibreMarker,
+    MaplibreNavigationControl,
+    MaplibrePopup,
+    MaplibreCluster,
+  } from '@strher/vue-maplibre-gl';
+  import 'maplibre-gl/dist/maplibre-gl.css';
 
-  const accessToken =
-    'pk.eyJ1IjoiYWdlbmNlc3R1ZGlvbWV0YSIsImEiOiJjanh5ZW81aHEwOHV3M2lwZzhhNW1vdXl5In0.3hbV2QKVzZWf511JK9xCug';
   const lng = ref(0);
   const lat = ref(0);
   const zoom = ref(1);
@@ -76,21 +71,20 @@
 <template>
   <div>
     <ClientOnly>
-      <MapboxMap
+      <MaplibreMap
         style="height: 400px"
-        :access-token="accessToken"
-        map-style="mapbox://styles/mapbox/streets-v11"
+        map-style="https://demotiles.maplibre.org/style.json"
         :center="mapCenter"
         :zoom="zoom"
         @mb-created="createdHandler"
         @mb-click="eventHandler">
-        <MapboxImages :sources="iconSources">
-          <MapboxLayer id="pois" :options="layerOptions" />
-        </MapboxImages>
-        <MapboxImage
+        <MaplibreImages :sources="iconSources">
+          <MaplibreLayer id="pois" :options="layerOptions" />
+        </MaplibreImages>
+        <MaplibreImage
           id="cat"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png">
-          <MapboxCluster
+          <MaplibreCluster
             data="/earthquakes.json"
             unclustered-point-layer-type="symbol"
             :unclustered-point-layout="{
@@ -98,7 +92,7 @@
               'icon-size': 0.1,
             }"
             :unclustered-point-paint="null" />
-          <MapboxLayer
+          <MaplibreLayer
             id="points"
             :options="{
               type: 'symbol',
@@ -122,17 +116,14 @@
                 'icon-size': 0.25,
               },
             }" />
-        </MapboxImage>
-        <MapboxGeolocateControl position="top-left" />
-        <MapboxNavigationControl position="bottom-right" />
-        <MapboxGeocoder @mb-result="eventHandler" />
-        <MapboxMarker :lng-lat="[lng - 30, lat]" @mb-click="eventHandler" />
-        <MapboxPopup :lng-lat="[lng, lat]">
+        </MaplibreImage>
+        <MaplibreNavigationControl position="bottom-right" />
+        <MaplibreMarker :lng-lat="[lng - 30, lat]" @mb-click="eventHandler" />
+        <MaplibrePopup :lng-lat="[lng, lat]">
           <p>Hello world !</p>
-        </MapboxPopup>
-      </MapboxMap>
+        </MaplibrePopup>
+      </MaplibreMap>
     </ClientOnly>
-    <MapboxGeocoder :access-token="accessToken" @mb-result="eventHandler" />
     <div class="controls">
       <fieldset class="controls__group">
         <legend>Longitude</legend>

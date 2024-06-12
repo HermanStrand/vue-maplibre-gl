@@ -1,14 +1,14 @@
 {
-  "name": "@studiometa/vue-mapbox-gl",
+  "name": "@strher/vue-maplibre-gl",
   "version": "2.5.0",
   "description": "A small components library to use Mapbox GL in Vue 3.",
-  "homepage": "https://github.com/studiometa/vue-mapbox-gl#readme",
+  "homepage": "https://github.com/strher/vue-maplibre-gl#readme",
   "bugs": {
-    "url": "https://github.com/studiometa/vue-mapbox-gl/issues"
+    "url": "https://github.com/strher/vue-maplibre-gl/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/studiometa/vue-mapbox-gl.git"
+    "url": "git+https://github.com/strher/vue-maplibre-gl.git"
   },
   "license": "GPL-3.0-or-later",
   "author": {
@@ -39,14 +39,12 @@
     "access": "public"
   },
   "devDependencies": {
-    "@mapbox/mapbox-gl-geocoder": "5.0.2",
     "@studiometa/js-toolkit": "2.12.0",
-    "mapbox-gl": "3.4.0",
+    "maplibre-gl": "^4.3.2",
     "vue": "3.4.27"
   },
   "peerDependencies": {
-    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
-    "mapbox-gl": "^2.8.2 || ^3.0.0",
+    "maplibre-gl": "^4.3.2",
     "vue": "^3.2.37"
   }
 }

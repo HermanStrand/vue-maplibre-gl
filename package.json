@@ -1,20 +1,20 @@
 {
-  "name": "@studiometa/vue-mapbox-gl-workspace",
+  "name": "@strher/vue-maplibre-gl-workspace",
   "private": true,
   "version": "2.5.0",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "docs:dev": "npm run dev -w @studiometa/vue-mapbox-gl-docs",
-    "docs:build": "npm run build -w @studiometa/vue-mapbox-gl-docs",
-    "demo:dev": "npm run dev -w @studiometa/vue-mapbox-gl-demo",
-    "demo:build": "npm run build -w @studiometa/vue-mapbox-gl-demo",
-    "lint": "eslint packages/{vue-mapbox-gl,demo} --ext=.js,.vue",
+    "docs:dev": "npm run dev -w @strher/vue-maplibre-gl-docs",
+    "docs:build": "npm run build -w @strher/vue-maplibre-gl-docs",
+    "demo:dev": "npm run dev -w @strher/vue-maplibre-gl-demo",
+    "demo:build": "npm run build -w @strher/vue-maplibre-gl-demo",
+    "lint": "eslint packages/{vue-maplibre-gl,demo} --ext=.js,.vue",
     "fix": "npm run lint -- --fix",
     "build": "rm -rf dist && npm run build:esbuild && npm run build:cp",
     "build:esbuild": "node scripts/build.mjs",
-    "build:cp": "cp packages/vue-mapbox-gl/package.json dist/ && cp README.md dist/",
+    "build:cp": "cp packages/vue-maplibre-gl/package.json dist/ && cp README.md dist/",
     "prepublishOnly": "npm run build",
     "test": "echo '@todo add tests.'"
   },

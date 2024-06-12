@@ -14,15 +14,15 @@ function capitalizeFirstLetter(string) {
 }
 
 /**
- * Map a mapbox element's events to the given vue element
+ * Map a maplibre element's events to the given vue element
  * @template {any}    T
  * @param    {any}    props          The component props.
- * @param    {Ref<T>} mapboxElement  The Mapbox element bound to the component.
+ * @param    {Ref<T>} maplibreElement  The Maplibre element bound to the component.
  * @param    {any}    propsConfig    The props original configuration.
  */
-export function usePropsBinding(props, mapboxElement, propsConfig) {
+export function usePropsBinding(props, maplibreElement, propsConfig) {
   /**
-   * Bind props to the given mapboxElement in order to update them when they change.
+   * Bind props to the given maplibreElement in order to update them when they change.
    * @param   {T} element
    * @returns {void}
    */
@@ -39,7 +39,7 @@ export function usePropsBinding(props, mapboxElement, propsConfig) {
             ? propsConfig[prop]?.bind ?? false
             : true;
 
-        // Do nothing if `setMethodName` is not a function of `mapBoxElement`
+        // Do nothing if `setMethodName` is not a function of `maplibreElement`
         // or if the props is not to be bounded
         if (!methodExists || !propNeedsBinding) {
           return;
@@ -61,10 +61,10 @@ export function usePropsBinding(props, mapboxElement, propsConfig) {
       });
   }
 
-  if (unref(mapboxElement)) {
-    bindProps(unref(mapboxElement));
+  if (unref(maplibreElement)) {
+    bindProps(unref(maplibreElement));
   } else {
-    const unwatch = watch(mapboxElement, (newValue) => {
+    const unwatch = watch(maplibreElement, (newValue) => {
       if (newValue) {
         bindProps(newValue);
         unwatch();

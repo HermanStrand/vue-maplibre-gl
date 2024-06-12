@@ -8,7 +8,7 @@ const cache = new Map();
 const regex = /onMb([A-Z])(.+)/;
 
 /**
- * Get a Mapbox event name from a Vue event name.
+ * Get a Maplibre event name from a Vue event name.
  * @param   {string} vueEventName
  * @returns {string}
  */
@@ -24,14 +24,14 @@ function getOriginalEvent(vueEventName) {
 }
 
 /**
- * Map a mapbox element's events to a Vue component.
+ * Map a maplibre element's events to a Vue component.
  * @param  {Function} emitFn        The emit function for the current component
- * @param  {Ref<any>} mapboxElement The Mapbox element bound to the component
+ * @param  {Ref<any>} maplibreElement The Maplibre element bound to the component
  * @param  {string[]} [events]      The events to map
  * @param  {string}   [layerId]     The layer on which the events are delegated
  * @returns {void}
  */
-export function useEventsBinding(emitFn, mapboxElement, events = [], layerId = null) {
+export function useEventsBinding(emitFn, maplibreElement, events = [], layerId = null) {
   const attrs = useAttrs();
   const vueEventNames = computed(() =>
     Object.entries(attrs)
@@ -42,7 +42,7 @@ export function useEventsBinding(emitFn, mapboxElement, events = [], layerId = n
   const unbindFunctions = new Map();
 
   /**
-   * Unbind events from the given Mapbox element.
+   * Unbind events from the given Maplibre element.
    * @param   {string[]} eventNames
    * @returns {void}
    */
@@ -60,7 +60,7 @@ export function useEventsBinding(emitFn, mapboxElement, events = [], layerId = n
   }
 
   /**
-   * Bind Vue events to the given Mapbox element.
+   * Bind Vue events to the given Maplibre element.
    * @param   {string[]} eventNames
    * @returns {void}
    */
@@ -83,16 +83,16 @@ export function useEventsBinding(emitFn, mapboxElement, events = [], layerId = n
       // If layerId is not null, all events must be
       // delegated from the map to the given layerId
       if (layerId) {
-        unref(mapboxElement).on(originalEvent, layerId, handler);
+        unref(maplibreElement).on(originalEvent, layerId, handler);
 
         unbindFunctions.set(eventName, () => {
-          unref(mapboxElement).off(originalEvent, layerId, handler);
+          unref(maplibreElement).off(originalEvent, layerId, handler);
         });
       } else {
-        unref(mapboxElement).on(originalEvent, handler);
+        unref(maplibreElement).on(originalEvent, handler);
 
         unbindFunctions.set(eventName, () => {
-          unref(mapboxElement).off(originalEvent, handler);
+          unref(maplibreElement).off(originalEvent, handler);
         });
       }
     });
@@ -115,13 +115,13 @@ export function useEventsBinding(emitFn, mapboxElement, events = [], layerId = n
           )
         : newVueEventNames ?? [];
 
-      if (unref(mapboxElement)) {
+      if (unref(maplibreElement)) {
         unbindEvents(eventNamesToDelete);
         bindEvents(eventNamesToAdd);
       } else {
-        // We need to watch the mapbox element once as it can
+        // We need to watch the maplibre element once as it can
         // be null when reaching this part of the code.
-        const unwatch = watch(mapboxElement, (newValue) => {
+        const unwatch = watch(maplibreElement, (newValue) => {
           if (newValue) {
             unbindEvents(eventNamesToDelete);
             bindEvents(eventNamesToAdd);

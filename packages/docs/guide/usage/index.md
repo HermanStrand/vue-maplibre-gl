@@ -4,48 +4,48 @@ Import directly the pieces you need as well as the stylesheet for Mapbox GL:
 
 ```vue
 <script setup>
-  import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl';
-  import 'mapbox-gl/dist/mapbox-gl.css';
+  import { MaplibreMap, MaplibreMarker } from '@strher/vue-maplibre-gl';
+  import 'maplibre-gl/dist/maplibre-gl.css';
 </script>
 
 <template>
-  <MapboxMap access-token="...">
-    <MapboxMarker position="[0, 0]" />
-  </MapboxMap>
+  <MaplibreMap access-token="...">
+    <MaplibreMarker position="[0, 0]" />
+  </MaplibreMap>
 </template>
 ```
 
-If you need to access to the Mapbox `map` instance, you can get it via the `mb-created` event on the `MapboxMap` component which is emitted when the map has been instantiated.
+If you need to access to the Maplibre `map` instance, you can get it via the `mb-created` event on the `MaplibreMap` component which is emitted when the map has been instantiated.
 
 ```vue {5,11}
 <script setup>
   import { ref } from 'vue';
-  import { MapboxMap } from '@studiometa/vue-mapbox-gl';
+  import { MaplibreMap } from '@strher/vue-maplibre-gl';
 
   const map = ref();
 </script>
 
 <template>
-  <MapboxMap
+  <MaplibreMap
     access-token="..."
-    @mb-created="(mapboxInstance) => map = mapboxInstance" />
+    @mb-created="(maplibreInstance) => map = maplibreInstance" />
 </template>
 ```
 
-Or you can add a ref to the `MapboxMap` component and access it with the `map` property:
+Or you can add a ref to the `MaplibreMap` component and access it with the `map` property:
 
 ```vue
 <script setup>
   import { ref } from 'vue';
-  import { MapboxMap } from '@studiometa/vue-mapbox-gl';
+  import { MaplibreMap } from '@strher/vue-maplibre-gl';
 
-  const mapboxMap = ref();
-  const map = computed(() => mapboxMap.value.map);
+  const maplibreMap = ref();
+  const map = computed(() => maplibreMap.value.map);
 </script>
 
 <template>
-  <MapboxMap
-    ref="mapboxMap"
-    access-token="..." />
+  <MaplibreMap
+    ref="maplibreMap"
+  />
 </template>
 ```

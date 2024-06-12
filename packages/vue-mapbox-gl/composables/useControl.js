@@ -1,18 +1,18 @@
-import mapboxgl from 'mapbox-gl';
+import maplibregl from 'maplibre-gl';
 import { onMounted, onUnmounted, ref, shallowReactive, unref, watch, nextTick } from 'vue';
 import { useMap } from './useMap.js';
 import { useEventsBinding } from './useEventsBinding.js';
 import { usePropsBinding } from './usePropsBinding.js';
 
 /**
- * Use a Mapbox control.
+ * Use a Maplibre control.
  * @template {any} T
- * @param   {T}        ControlConstructor  A Mapbox control constructor function.
+ * @param   {T}        ControlConstructor  A Maplibre control constructor function.
  * @param   {object}   options
  * @param   {any}      options.propsConfig Props configuration for the component.
  * @param   {an}       options.props       Resolved props of the component.
  * @param   {Function} options.emit        Emit function of the component.
- * @param   {string[]} options.events      List of events for the Mapbox control.
+ * @param   {string[]} options.events      List of events for the Maplibre control.
  * @returns {{ control: Ref<InstanceType<T>>, map: Ref<any> }}
  */
 export function useControl(ControlConstructor, { propsConfig, props, emit, events = [] }) {
@@ -48,7 +48,7 @@ export function useControl(ControlConstructor, { propsConfig, props, emit, event
     // The GeolocateControl setup includes some async tasks, so we need to wait
     // for its _setup property to become true to set it as the control ref value.
     /* eslint-disable no-underscore-dangle */
-    if (ControlConstructor === mapboxgl.GeolocateControl && !ctrl._setup) {
+    if (ControlConstructor === maplibregl.GeolocateControl && !ctrl._setup) {
       const tmpControl = shallowReactive(ctrl);
       const unwatch = watch(tmpControl, (reactiveCtrl) => {
         if (reactiveCtrl._setup) {

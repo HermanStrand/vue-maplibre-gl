@@ -14,7 +14,7 @@ async function build(format = 'esm') {
   console.log(`Building ${format}...`);
   const outdir = path.resolve(dirname, '../dist');
   const result = await esbuild({
-    entryPoints: [path.resolve(dirname, '../packages/vue-mapbox-gl/index.js')],
+    entryPoints: [path.resolve(dirname, '../packages/vue-maplibre-gl/index.js')],
     outdir,
     write: true,
     bundle: true,
@@ -28,7 +28,7 @@ async function build(format = 'esm') {
         sourceMap: true,
       }),
     ],
-    external: ['@mapbox/mapbox-gl-geocoder', 'mapbox-gl', 'vue'],
+    external: ['mapbox-gl', 'vue'],
   });
   writeFileSync(path.resolve(outdir, `meta.${format}.json`), JSON.stringify(result.metafile));
   console.log('Done!');

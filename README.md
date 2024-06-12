@@ -1,6 +1,6 @@
 # 🗺 Vue 3 Mapbox GL
 
-[![NPM Version](https://img.shields.io/npm/v/@studiometa/vue-mapbox-gl.svg?style=flat-square)](https://www.npmjs.com/package/@studiometa/vue-mapbox-gl)
+[![NPM Version](https://img.shields.io/npm/v/@strher/vue-maplibre-gl.svg?style=flat-square)](https://www.npmjs.com/package/@strher/vue-maplibre-gl)
 
 > A small components library to use Mapbox GL in Vue 3 app.
 
@@ -31,7 +31,7 @@ The following components are available:
 
 ```bash
 # Clone the project
-git clone git@github.com:studiometa/vue-mapbox-gl.git
+git clone git@github.com:strher/vue-maplibre-gl.git
 # Cd in the repository
 cd vue-mapbox-gl
 # Install dependencies
